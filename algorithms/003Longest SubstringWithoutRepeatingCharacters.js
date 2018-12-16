@@ -20,50 +20,58 @@
 // Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 
+//when copy this code to leetcode please delete all the console.log
 var lengthOfLongestSubstring = function(s) {
     var l=s.length;
-    if(l===1){
-        return 1;
-    }
-    var end=0;
-    var start=1;
+
+
+console.log(s.length);
+
+    var end=-1;
     var max=0;
     var hash={};
 
 
-    for(;start<l;start++){
-
-        console.log('end '+end+'  '+s.charAt(end))
-        console.log('start '+start+'  '+s.charAt(start));
 
 
-        if(s.charAt(end)===s.charAt(start)){
-            if(start-end>max){
-                max=start-end;
-                console.log('???')
-            }
-            end=start;
-            hash={}
+    for(var i=0;i<76;i++) {
+        console.log(s.charAt(i));
+
+    }
+
+
+        for(var i=0;i<l;i++){
+console.log(123);
+console.log(s.charAt(i));
+        console.log('end '+end);
+        console.log('i '+i);
+
+
+        console.log(hash[s.charAt(i)]);
+
+
+        if(hash[s.charAt(i)]>end){
+
+
+            end=hash[s.charAt(i)]
+
+            // continue;
         }
 
-        if(s.charAt(end)!==s.charAt(start)){
-            if(hash[s.charAt(start)]>0)
-            {
-                end=hash[s.charAt(start)];
-                hash={}
-            }
-            if(start-end>=max){
-                max=start-end+1;
-                console.log('!!!');
-            }
-            hash[s.charAt(start)]=start;
+
+        if(i-end>max){
+            max=i-end;
         }
+
+        hash[s.charAt(i)]=i;
 
         console.log('max '+max);
+
+        console.log('*********')
+
     }
-    // console.log(end);
     return max;
 };
 
-var ans=lengthOfLongestSubstring("dvdf");
+var ans=lengthOfLongestSubstring("hvmpigcqqdzttakknrxdxxytyjhozstiqfxynzqfepyzskjhbjmygkuftdvuwqcovcmkbdpguphm");
 console.log(ans);

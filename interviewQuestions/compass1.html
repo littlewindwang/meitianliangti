@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .my-table{
+            border:1px solid black;
+            background-color: #cccccc;
+            border-collapse: collapse;
+            text-align:center;
+        }
+
+        .my-table tr td{
+            border:1px solid black;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+<div id="table">
+
+</div>
+
+<script>
+
+
+
+
+
+
+
+
+    function createTableObj(){
+        var obj={};
+        obj.headname=['','ob1','ob2'];
+        Array.prototype.insert=function(i,value){
+            this.splice(i,0,value);
+        };
+        for(var i=0,l=arguments.length;i<l;i++){
+            for(var key in arguments[i]){
+                if(obj[key]){
+                    obj[key].insert(i,arguments[i][key]);
+                } else{
+                    var temp=[];
+                    temp[i]=arguments[i][key];
+                    obj[key]=temp;
+                }
+            }
+        }
+        return obj;
+    }
+
+    function createTable(object){
+        var container=document.getElementById('table');
+        var table=document.createElement('table');
+        table.classList.add("my-table");
+
+
+        var tr=table.insertRow(0);
+        for(var i=0,l=object.headname.length;i<l;i++){
+            var th=tr.insertCell(i);
+            var text=document.createTextNode(object.headname[i]);
+            th.appendChild(text);
+        }
+        var i=1;
+        for(var key in object){
+            if(key=='headname'){
+                continue;
+            }
+            tr=table.insertRow(i);
+            for(var k=-1,val=object[key];k<l-1;k++){
+                var text;
+                var td=tr.insertCell(k+1);
+                var firstValue=val[0];
+                var allExist=true;
+                var allSame=false;
+
+                if(k===-1){
+                    text=document.createTextNode(key);
+                } else {
+
+
+
+                    if(val[k]===undefined){
+                        text=document.createTextNode('');
+                        allExist=false
+                    }else{
+                        text=document.createTextNode(val[k]);
+                    }
+                }
+                td.appendChild(text).classList.add('abc');
+                // allExist?td.appendChild(text):td.appendChild(text);
+
+
+            }
+
+
+            i++;
+        }
+        container.appendChild(table);
+    }
+
+
+
+
+
+    window.onload=function(){
+
+        var a={
+            a:'aa',
+            b:'ab',
+            c:'test'
+        };
+        var b={
+            a:'ba',
+            b:'bb',
+            d:'sweet'
+        };
+        var ans= createTableObj(a,b);
+        createTable(ans);
+
+
+    };
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
+
+

@@ -17,7 +17,6 @@
         }
 
 
-
     </style>
 
 </head>
@@ -27,12 +26,6 @@
 </div>
 
 <script>
-
-
-
-
-
-
 
 
     function createTableObj(){
@@ -59,61 +52,67 @@
         var container=document.getElementById('table');
         var table=document.createElement('table');
         table.classList.add("my-table");
-
-
         var tr=table.insertRow(0);
         for(var i=0,l=object.headname.length;i<l;i++){
             var th=tr.insertCell(i);
             var text=document.createTextNode(object.headname[i]);
             th.appendChild(text);
+            th.style.fontWeight='bold';
         }
-        var i=1;
+        i=1;
         for(var key in object){
-            if(key=='headname'){
+            if(key==='headname'){
                 continue;
             }
             tr=table.insertRow(i);
+            var allExist=true;
+            var allSame=true;
             for(var k=-1,val=object[key];k<l-1;k++){
                 var text;
                 var td=tr.insertCell(k+1);
                 var firstValue=val[0];
-                var allExist=true;
-                var allSame=false;
-
+                if(firstValue!==val[k]&&k!==-1){
+                    allSame=false;
+                }
                 if(k===-1){
                     text=document.createTextNode(key);
+                    td.appendChild(text);
+                    td.style.fontWeight='bold';
                 } else {
-
-
 
                     if(val[k]===undefined){
                         text=document.createTextNode('');
-                        allExist=false
+                        allExist=false;
+                        td.appendChild(text);
+                        td.style.backgroundColor='white';
+
                     }else{
                         text=document.createTextNode(val[k]);
+                        td.appendChild(text);
+
                     }
                 }
-                td.appendChild(text).classList.add('abc');
-                // allExist?td.appendChild(text):td.appendChild(text);
-
-
             }
 
-
+            if(allSame){// all the same
+                tr.style.backgroundColor='green';
+            } else {//not all the same
+                if(allExist)//not exist
+                {
+                    tr.style.backgroundColor='red';
+                }
+            }
             i++;
         }
         container.appendChild(table);
     }
 
 
-
-
-
     window.onload=function(){
 
         var a={
             a:'aa',
-            b:'ab',
+            b:'bb',
             c:'test'
         };
         var b={
@@ -123,7 +122,6 @@
         };
         var ans= createTableObj(a,b);
         createTable(ans);
-
 
     };
 

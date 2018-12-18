@@ -24,45 +24,35 @@
  * @param {number} x
  * @return {boolean}
  */
-// var isPalindrome = function(x) {
-//     x=9
-//     var a=(parseInt(x%10)===0);
-//     console.log(parseInt(x%10)===0);
-//     var b=(x!==0);
-//     console.log(x!==0);
-//     console.log(((parseInt(x/10)===0)&&(x!==0)));
-//
-//
-//     if(x<0||(parseInt(x/10)===0&&x!==0)){
-//         console.log('!!!1');
-//
-//         console.log(a);
-//         console.log(b);
-//         console.log((a&&b));
-//         // console.log(b);
-//         return false
-//     } else {
-//         return true;
-//     }
-//
-// };
-//
-// isPalindrome(9)
+var isPalindrome = function(x) {
+
+
+    if(x<0||(parseInt(x%10)===0&&x!==0)){
+        return false
+    } else {
+        var ans=false;
+
+
+var reverse=0;
+        while(x>reverse){
+
+            reverse=reverse*10+x%10;
+
+            if(x==reverse){
+                return true
+            }
+            // x = Math.floor(x / 10);
+            x-=x%10;
+            x/=10;
+        }
+
+        return x===reverse;
+    }
+
+};
+
+ans=isPalindrome(11911)
+console.log(ans);
 
 
 
-
-
-x=9;
-var a=(parseInt(x%10)===0);
-console.log(parseInt(x%10)===0);
-var b=(x!==0);
-console.log(x!==0);
-console.log(((parseInt(x/10)===0)&&(x!==0)));
-
-
-console.log('*******');
-
-console.log(a);
-console.log(b);
-console.log(a&&b);

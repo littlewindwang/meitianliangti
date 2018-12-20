@@ -28,3 +28,29 @@ var twoSum = function(nums, target) {
     return []
 };
 
+
+// var result=[];
+//
+// var twoSum = function(nums, target) {
+//     var nums=nums.sort(function(a,b){
+//         return a-b;
+//     });
+//
+//     var first=0;
+//     var last=nums.length-1;
+//
+//     while(first<last){
+//         var sum=nums[first]+nums[last];
+//         if(sum===target){
+//             return [nums[first],nums[last]];
+//         } else if(sum<target){
+//             first++
+//         } else {
+//             last--;
+//         }
+//     }
+//     return [];
+// };
+// // var store=function(a,b){
+// //     result.push([a,b]);
+// // };

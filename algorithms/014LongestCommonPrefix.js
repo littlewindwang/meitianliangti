@@ -3,16 +3,7 @@
  * @return {string}
  */
 var longestCommonPrefix = function(strs) {
-<<<<<<< HEAD
-var hash={} ;
 
-
-
-
-
-
-};
-=======
     var longest='';
     var l=strs.length;
     longest=strs[0];
@@ -30,4 +21,3 @@ var hash={} ;
 
 
 };
->>>>>>> 30f78206cd5eff46e2e82bfde35ad4c8c27a106d

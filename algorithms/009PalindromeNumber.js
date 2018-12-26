@@ -38,7 +38,7 @@ var reverse=0;
 
             reverse=reverse*10+x%10;
 
-            if(x==reverse){
+            if(x==reverse){//为什么这里和solution不一样,为什么要多加一个判断,少了这个就什么也判断不出来了?
                 return true
             }
             // x = Math.floor(x / 10);
